@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure Travel | One-Page Site</title>
+    <link rel="stylesheet" href="CSS/one_page_website.css"> 
+</head>
+<body>
+
+    <nav>
+        <a href="#home">Home</a> | 
+        <a href="#gallery">Gallery</a> | 
+        <a href="#video">Watch Video</a> | 
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <main>
+        <section id="home">
+            <h1>Explore the Great Outdoors</h1>
+            <p>Welcome to our adventure portal! We specialize in showing you the most breathtaking landscapes and hidden gems around the world.</p>
+        </section>
+
+        <hr>
+
+        <section id="gallery">
+            <h2>Our Latest Expeditions</h2>
+            <p>Check out some of the sights from our recent trips (Click to enlarge):</p>
+            <img src="Images/mountain.jpg" alt="Mountain" width="300" onclick="openModal();currentSlide(1)" class="hover-shadow">
+            <img src="Images/forest.jpg" alt="Forest" width="300" onclick="openModal();currentSlide(2)" class="hover-shadow">
+            <img src="Images/lake.jpg" alt="Lake" width="300" onclick="openModal();currentSlide(3)" class="hover-shadow">
+        </section>
+
+        <div id="myModal" class="modal">
+            <span class="close cursor" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <div class="mySlides">
+                    <img src="Images/mountain.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <img src="Images/forest.jpg" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <img src="Images/lake.jpg" style="width:100%">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </div>
+
+        <hr>
+
+        <section id="video">
+            <h2>Experience the Journey</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+        </section>
+
+        <hr>
+
+        <section id="contact">
+            <h2>Get in Touch</h2>
+            <form action="#">
+                <label for="fname">First Name:</label><br>
+                <input type="text" id="fname" name="fname" required><br><br>
+                <label for="email">Email Address:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+                <input type="submit" value="Send Request">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Adventure Travel Co. | Designed for Web Development Training</p>
+        <p><a href="#home">Back to top</a></p>
+    </footer>
+
+    <script src="JS/one_page_website.js"></script>
+</body>
+</html>
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9); /* Darker background for focus */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Hide slides by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  text-decoration: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.hover-shadow {
+  cursor: pointer;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+// Function to open the modal
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
+
+// Function to close the modal
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  
+  slides[slideIndex-1].style.display = "block";
+}
